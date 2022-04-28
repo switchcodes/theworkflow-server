@@ -1,0 +1,11 @@
+{
+	"rangeStrategy": "pin",
+	"dependencyDashboard": true,
+	"baseBranches": ["dependency-updates"],
+	"packageRules": [
+		{
+			"updateTypes": ["minor", "patch", "pin", "digest"],
+			"automerge": true
+		}
+	]
+}
