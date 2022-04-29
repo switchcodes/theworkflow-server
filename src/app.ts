@@ -1,6 +1,8 @@
 import express, { NextFunction, Request, Response } from "express";
 import fs from "fs/promises";
+import "dotenv/config";
 import path from "path";
+if (process.env["API_KEY"] === undefined) throw Error("API_KEY is not set in .env");
 
 interface Scores {
 	[name: string]: number;
@@ -8,7 +10,7 @@ interface Scores {
 
 var scores: Scores = {};
 const app = express();
-const API_KEY = "025f5b0f040fb0c553d4755a991f98a250b8405863d34a9b2b6b5d2f31f507f7";
+const API_KEY = process.env["API_KEY"];
 
 const checkForAPIKey = (req: Request, res: Response, next: NextFunction) => {
 	const apiKey = req.get("X-API-KEY");
